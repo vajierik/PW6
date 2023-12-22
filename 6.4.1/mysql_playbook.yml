@@ -1,0 +1,30 @@
+---
+- hosts: localhost
+  gather_facts: yes
+  tasks:
+    - name: Install packages
+      apt:
+        pkg:
+          - default-libmysqlclient-dev
+          - build-essential
+          - mysql-server
+          - mysql-client
+          - python3-pymysql
+      become: yes
+    - name: restart MySQL
+      service:
+        name: mysql
+        state: restarted
+      become: yes
+    - name: Change the authentication plugin of MySQL root user to
+        mysql_native_password
+      shell: mysql -u root -e 'UPDATE mysql.user SET plugin="mysql_native_password"
+        WHERE user="root" AND host="localhost";'
+    - name: Flush Privileges
+      shell: mysql -u root -e 'FLUSH PRIVILEGES;'
+    - name: Set mysql root password
+      mysql_user:
+        name: root
+        host: localhost
+        password: "11"
+      become: yes
