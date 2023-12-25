@@ -1,0 +1,8 @@
+---
+# tasks file for vsftpd
+# Install vsftp
+- include_tasks: install_vsftpd.yml
+# Configure vsftp
+- include_tasks: configure_vsftpd.yml
+# Restart service
+- include_tasks: restart_vsftpd.yml 
