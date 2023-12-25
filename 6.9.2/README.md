@@ -1,5 +1,5 @@
 # Nginx + php-fpm role
-## При запуске playbook'а без аргументов, documet_root будет дефотным (/var/www/html)
+## При запуске playbook'а без аргументов, documet_root будет дефолтным (/var/www/html)
 
 ansible-playbook nginx_php.yml -vvv --ask-become-pass
 
