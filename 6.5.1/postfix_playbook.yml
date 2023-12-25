@@ -1,0 +1,34 @@
+---
+- hosts: test
+  tasks:
+    - name: Update package cache
+      apt:
+        update_cache: yes
+    - name: Install Postfix
+      apt:
+        name: postfix
+        state: present
+    - name: Configure Postfix
+      debconf:
+        name: postfix
+        question: postfix/main_mailer_type
+        value: Internet Site
+        vtype: string
+        state: present
+      with_items:
+        - example.com
+      notify: Restart Postfix
+  handlers:
+    - name: Restart Postfix
+      service:
+        name: postfix
+        state: restarted
+      tags:
+        - init postfix
+    - name: Remove postfix
+      apt:
+        name: postfix
+        state: absent
+      become: yes
+      tags:
+        - drop postfix
