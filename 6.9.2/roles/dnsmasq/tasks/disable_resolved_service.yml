@@ -1,0 +1,11 @@
+---
+- name: Remove resolve conf
+  file:
+    path: /etc/resolv.conf
+    state: absent
+  become: yes
+- name: Crete new resolve conf
+  copy:
+    dest: /etc/resolv.conf
+    content: "nameserver 8.8.8.8"
+  become: yes
