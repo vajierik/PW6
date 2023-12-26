@@ -1,0 +1,14 @@
+---
+galaxy_info:
+  author: vajierik
+  galaxy_info: null
+  description: Test role nginx
+  company: vajierik
+  license: Free
+  min_ansible_version: 2.1
+  platforms:
+    - name: Ubuntu
+      versions:
+        - 20
+  galaxy_tags: []
+dependencies: []

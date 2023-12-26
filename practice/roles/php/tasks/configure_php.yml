@@ -1,0 +1,8 @@
+---
+# set port
+- name: Set port
+  lineinfile:
+    path: '{{ conf_file }}'
+    regexp: '^listen ='
+    line: 'listen = 158.160.32.129:9000'
+  become: yes
