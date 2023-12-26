@@ -1,0 +1,12 @@
+[database]
+vm1 ansible_host=10.128.0.16 ansible_user=otr psql_version=14 data_dir=/psql/data
+
+[app]
+vm2 ansible_host=10.128.0.6 ansible_user=otr
+vm3 ansible_host=10.128.0.37 ansible_user=otr
+
+[web]
+vm1 ansible_host=10.128.0.16 ansible_user=otr
+
+[all:vars]
+ansible_python_interpreter=/usr/bin/python3
